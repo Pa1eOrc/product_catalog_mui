@@ -1,0 +1,173 @@
+@font-face {
+  font-family: Mont;
+  src: url(/fonts/Mont-Regular.otf);
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: bold;
+  src: url(/fonts/Mont-Bold.otf);
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: bolder;
+  src: url(/fonts/Mont-SemiBold.otf);
+}
+
+@mixin onMobile {
+  @media (max-width: 599px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin onDesctop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Mont";
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+
+  & > section {
+    display: flex;
+    flex: 1;
+    height: 100%;
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  position: relative;
+
+  color: #89939a;
+  width: 100%;
+  height: 100%;
+
+  &--active {
+    color: #313237;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 61px;
+      left: 10px;
+      right: 10px;
+      height: 3px;
+      background-color: #313237;
+    }
+  }
+
+  @include onTablet {
+    &--icon-active {
+      &::before {
+        content: "";
+        position: absolute;
+        top: 61px;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background-color: #313237;
+      }
+    }
+  }
+}
+
+.menu {
+  background-color: #fff;
+  width: 100%;
+
+  @include onMobile {
+    position: absolute;
+    top: 70px;
+    z-index: 0;
+    opacity: 0;
+    height: 0;
+    transition: all 0.5s ease-in-out;
+    pointer-events: none;
+
+    &--open {
+      z-index: 2;
+      opacity: 1;
+      height: calc(100vh - 70px);
+      pointer-events: all;
+    }
+  }
+
+  @include onTablet {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.banner {
+  &__img {
+    @include onMobile {
+      width: 100vw;
+      height: 100vw;
+    }
+    width: 100%;
+    height: 40vw;
+    max-height: 400px;
+    object-fit: contain;
+    background-color: #f8f7f7;
+  }
+}
+
+.footer {
+  &__logo {
+    height: 32px;
+    width: max-content;
+
+    & > img {
+      height: 100%;
+    }
+  }
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  @include onMobile {
+    display: none;
+  }
+
+  color: #81838b;
+  transition: all .3s ease-in-out;
+
+  &:hover {
+    color: #313237;
+  }
+}
+
+.swiper-pagination-bullet {
+  border-radius: 0;
+  width: 9px;
+  height: 4px;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #313237;
+}
