@@ -91,6 +91,7 @@ const handleButtonClick = () => {
             height: 32,
             border: "1px solid #89939a",
             padding: 0,
+            color: "#313237",
           }}
           onClick={handleButtonClick}
         >

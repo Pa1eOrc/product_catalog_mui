@@ -1,4 +1,4 @@
-const BASE_URL = "https://Pa1eOrc.github.io/redux_product_catalog/api/";
+const BASE_URL = "http://localhost:5173/api";
 
 function wait(delay: number) {
   return new Promise((resolve) => {

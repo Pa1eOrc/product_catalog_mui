@@ -56,3 +56,10 @@ export const getHotPriceProducts = (products: Product[]) => {
 
   return sortedProducts.slice(0, 12);
 };
+
+export function filterProductsByCategory(
+  products: Product[],
+  category: string
+): Product[] {
+  return products.filter((product) => product.category === category);
+}

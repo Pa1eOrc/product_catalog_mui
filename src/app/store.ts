@@ -1,10 +1,12 @@
 import { Action, ThunkAction, configureStore } from "@reduxjs/toolkit";
 
 import homePageSlice from "../fuatures/HomePage/homePageSlice";
+import searchParamsSlice from "../fuatures/SearchParams/searchParamsSlice";
 
 export const store = configureStore({
   reducer: {
-    homePageSlice
+    homePageSlice,
+    searchParamsSlice,
   }
 });
 

@@ -28,6 +28,12 @@
 }
 
 @mixin onDesctop {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+
+@mixin imgHeight {
   @media (min-width: 1200px) {
     @content;
   }
@@ -62,7 +68,6 @@ a {
   justify-content: center;
   padding: 0 10px;
   position: relative;
-
   color: #89939a;
   width: 100%;
   height: 100%;
@@ -71,6 +76,10 @@ a {
     color: #313237;
 
     &::before {
+      @include onMobile {
+        top: 45px;
+      }
+
       content: "";
       position: absolute;
       top: 61px;
@@ -81,17 +90,15 @@ a {
     }
   }
 
-  @include onTablet {
-    &--icon-active {
-      &::before {
-        content: "";
-        position: absolute;
-        top: 61px;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background-color: #313237;
-      }
+  &--icon-active {
+    &::before {
+      content: "";
+      position: absolute;
+      top: 61px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: #313237;
     }
   }
 }
@@ -154,12 +161,32 @@ a {
     display: none;
   }
 
-  color: #81838b;
-  transition: all .3s ease-in-out;
+  top: 0;
+  margin: 0;
+  border: 1px solid #b4bdc3;
+  color: #b4bdc3;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+  height: 100%;
+  width: 32px;
+  z-index: 2;
 
   &:hover {
     color: #313237;
+    border-color: #313237;
   }
+
+  &::after {
+    font-size: 16px;
+  }
+}
+
+.swiper-button-prev {
+  left: 0;
+}
+
+.swiper-button-next {
+  right: 0;
 }
 
 .swiper-pagination-bullet {
@@ -170,4 +197,46 @@ a {
 
 .swiper-pagination-bullet-active {
   background-color: #313237;
+}
+
+.category {
+  &__link {
+    display: flex;
+    align-items: flex-end;
+    justify-content: right;
+    height: calc((100vw - 64px) / 3);
+
+    @mixin onMobile {
+      width: calc(100vw - 32px);
+      height: calc(100vw - 32px);
+    }
+
+    @include imgHeight {
+      height: 100%;
+      max-width: 378px;
+      max-height: 378px;
+    }
+
+    &--phones {
+      background-color: #fcdbc1;
+    }
+
+    &--tablets {
+      background-color: #8d8d92;
+    }
+
+    &--accessories {
+      background-color: #973d5f;
+    }
+  }
+
+  &__img {
+    width: inherit;
+    height: inherit;
+  }
+}
+
+.dropdown__link {
+  display: block;
+  width: 100%;
 }

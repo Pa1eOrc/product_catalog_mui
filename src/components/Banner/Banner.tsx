@@ -18,6 +18,9 @@ const CastomContainer = styled(Container)(({ theme }) => ({
   [theme.breakpoints.up("md")]: {
     padding: theme.spacing(0, 3),
   },
+  [theme.breakpoints.up("md")]: {
+    padding: theme.spacing(0, 4),
+  },
 })) as typeof Container;
 
 export const Banner = () => {

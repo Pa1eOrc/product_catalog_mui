@@ -8,8 +8,9 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useSearchParams } from "react-router-dom";
 import { useState } from "react";
+import { getSearchWith } from "../../helperFunctions/getSearchWitth";
 
 const Navbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
@@ -40,6 +41,7 @@ const LinkBox = styled(Box)(({ theme }) => ({
     flexDirection: "column",
     height: "inherit",
     gap: 10,
+    maxHeight: 290,
   },
   [theme.breakpoints.up("sm")]: {
     flexDirection: "row",
@@ -216,6 +218,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export const Header = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [favourites] = useState([]);
   const [cart] = useState([]);
   const [isMenu, setIsMenu] = useState(false);
@@ -230,11 +233,24 @@ export const Header = () => {
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setInputValue(e.target.value);
+    const newInputValue = e.target.value;
+    setInputValue(newInputValue);
+    const newSearchParams = getSearchWith(
+      searchParams, { query: newInputValue }
+    );
+
+    setSearchParams(newSearchParams);
   };
 
-  console.log(inputValue);
-  
+  const handleClearInput = () => {
+    const newSearchParams = getSearchWith(
+      searchParams, {
+      query: null,
+      page: null,
+    });
+    setSearchParams(newSearchParams);
+    setInputValue("");
+  }
 
   return (
     <AppBar
@@ -273,6 +289,7 @@ export const Header = () => {
                 sx={{
                   height: "100%",
                   padding: 0,
+                  color: "#313237",
                 }}
                 onClick={() => setIsMenu(false)}
               >
@@ -284,6 +301,7 @@ export const Header = () => {
                 sx={{
                   height: "100%",
                   padding: 0,
+                  color: "#313237",
                 }}
                 onClick={() => setIsMenu(false)}
               >
@@ -295,6 +313,7 @@ export const Header = () => {
                 sx={{
                   height: "100%",
                   padding: 0,
+                  color: "#313237",
                 }}
                 onClick={() => setIsMenu(false)}
               >
@@ -306,6 +325,7 @@ export const Header = () => {
                 sx={{
                   height: "100%",
                   padding: 0,
+                  color: "#313237",
                 }}
                 onClick={() => setIsMenu(false)}
               >
@@ -328,9 +348,7 @@ export const Header = () => {
               />
 
               {inputValue ? (
-                <SearchButton
-                  onClick={() => setInputValue("")}
-                >
+                <SearchButton onClick={handleClearInput}>
                   <CloseIcon
                     sx={{
                       height: 20,
@@ -358,6 +376,7 @@ export const Header = () => {
                   borderLeft: "1px solid #E2E6E9",
                   padding: 0,
                   borderRadius: 0,
+                  color: "#313237",
                 }}
                 onClick={() => setIsMenu(false)}
               >
@@ -380,6 +399,7 @@ export const Header = () => {
                   borderRight: "1px solid #E2E6E9",
                   padding: 0,
                   borderRadius: 0,
+                  color: "#313237",
                 }}
                 onClick={() => setIsMenu(false)}
               >

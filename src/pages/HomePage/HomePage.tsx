@@ -1,11 +1,12 @@
 import { Container, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { useEffect } from "react";
-
 import { Banner } from "../../components/Banner";
-import * as homePageActions from "../../fuatures/HomePage/homePageSlice";
+import { NewModels } from "../../components/NewModels";
+import { ShopByCategory } from "../../components/ShopByCategory";
+import { HotPrice } from "../../components/HotPrice";
+import { useAppSelector } from "../../app/hooks";
+import { getShopLinksNameAndLength } from "../../helperFunctions/otherFunctions";
 
 const CastomContainer = styled(Container)(({ theme }) => ({
   [theme.breakpoints.up("xs")]: {
@@ -30,17 +31,10 @@ const CastomTitleTypography = styled(Typography)(({ theme }) => ({
 })) as typeof Typography;
 
 export const HomePage = () => {
-  const dispatch = useAppDispatch();
-  const { products, newModels, hotPrice, loaded, hasError } = useAppSelector(
+  const { newModels, hotPrice, products } = useAppSelector(
     (state) => state.homePageSlice
   );
-
-  useEffect(() => {
-    dispatch(homePageActions.init());
-  }, [dispatch]);
-
-console.log(products, hotPrice, newModels);
-
+  const shopByCategoryLinks = getShopLinksNameAndLength(products);
 
   return (
     <CastomContainer>
@@ -49,6 +43,12 @@ console.log(products, hotPrice, newModels);
       </CastomTitleTypography>
 
       <Banner />
+
+      <NewModels products={newModels} />
+
+      <ShopByCategory links={shopByCategoryLinks} />
+
+      <HotPrice products={hotPrice} />
     </CastomContainer>
   );
 };
