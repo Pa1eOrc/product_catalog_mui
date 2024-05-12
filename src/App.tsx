@@ -1,4 +1,4 @@
-import { Outlet, useSearchParams } from "react-router-dom";
+import { Outlet, useLocation, useSearchParams } from "react-router-dom";
 
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
@@ -9,8 +9,10 @@ import * as homePageActions from "./fuatures/HomePage/homePageSlice";
 import * as searchParamsActions from "./fuatures/SearchParams/searchParamsSlice";
 
 import "./App.scss";
+import { getBreadcrumbsParams } from "./helperFunctions/otherFunctions";
 
 export const App = () => {
+  const { pathname } = useLocation();
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
   const page = +(searchParams.get("page") || 1);
@@ -19,7 +21,7 @@ export const App = () => {
   const query = searchParams.get("query") || "";
 
   useEffect(() => {
-    dispatch(homePageActions.init());
+    dispatch(homePageActions.init("products"));
   }, [dispatch]);
 
   useEffect(() => {
@@ -38,8 +40,10 @@ export const App = () => {
     dispatch(searchParamsActions.setQuery({ query }));
   }, [dispatch, query]);
 
-  console.log(query);
-  
+  useEffect(() => {
+    const breadcrumbs = getBreadcrumbsParams(pathname);
+    dispatch(searchParamsActions.setBreadcrumbs({ breadcrumbs }));
+  }, [dispatch, pathname]);
 
   return (
     <div className="App">

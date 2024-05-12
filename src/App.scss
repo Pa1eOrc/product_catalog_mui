@@ -54,6 +54,7 @@ a {
 .App {
   display: flex;
   flex-direction: column;
+  height: 100vh;
 
   & > section {
     display: flex;
@@ -205,6 +206,7 @@ a {
     align-items: flex-end;
     justify-content: right;
     height: calc((100vw - 64px) / 3);
+    transition: all .3s ease-in-out;
 
     @mixin onMobile {
       width: calc(100vw - 32px);
@@ -228,6 +230,10 @@ a {
     &--accessories {
       background-color: #973d5f;
     }
+
+    &:hover {
+      transform: scale(105%);
+    }
   }
 
   &__img {
@@ -239,4 +245,69 @@ a {
 .dropdown__link {
   display: block;
   width: 100%;
+}
+
+.breadcrumbs__link {
+  display: block;
+  width: 24px;
+  height: 30px;
+  padding-top: 2px;
+}
+
+.main__image {
+  min-height: 288px;
+  min-width: 288px;
+  height: 288px;
+  width: 100%;
+  object-fit: contain;
+
+  @include onTablet {
+    height: 288px;
+  }
+
+  @include onDesctop {
+    height: 464px;
+    width: 464px;
+  }
+}
+
+.colors__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #e2e6e9;
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+
+  &--active {
+    border-color: #313237;
+  }
+
+  &:hover {
+    border-color: #313237;
+  }
+}
+
+.capacity__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 56px;
+  height: 32px;
+  border: 1px solid #e2e6e9;
+  transition: all 0.3s ease-in-out;
+  font-size: 14px;
+  line-height: 21px;
+  color: #313237;
+
+  &--active {
+    background-color: #313237;
+    color: #fff;
+  }
+
+  &:hover {
+    border-color: #313237;
+  }
 }

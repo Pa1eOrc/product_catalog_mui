@@ -1,24 +1,8 @@
 import { Box } from "@mui/material";
 import { Product } from "../../types/Product";
 import { ProductCart } from "../ProductCart";
-import { styled } from "@mui/system";
 import { useEffect } from "react";
-
-const CastomProductBox = styled(Box)(({ theme }) => ({
-  display: "flex",
-  overflow: "hidden",
-  padding: 0,
-  [theme.breakpoints.down("sm")]: {
-    margin: theme.spacing(0, 0, 0, 1),
-  },
-  [theme.breakpoints.up("sm")]: {
-    margin: theme.spacing(0, 0, 0, 2),
-  },
-  [theme.breakpoints.up("lg")]: {
-    maxWidth: 1158,
-    margin: theme.spacing(0, 0, 0, 3),
-  },
-})) as typeof Box;
+import { CastomProductBox } from "./SwiperStyle";
 
 type Props = {
   products: Product[];

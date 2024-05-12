@@ -15,11 +15,16 @@ import {
   getStartIndex,
 } from "../../helperFunctions/otherFunctions";
 import { sortProducts } from "../../helperFunctions/sortedProducts";
+import { BasicBreadcrumbs } from "../../components/Breadcrumbs";
 
 export const AccessoriesPage = () => {
-  const { perPage, page, sort, query } = useAppSelector(
-    (state) => state.searchParamsSlice
-  );
+  const {
+    perPage,
+    page,
+    sort,
+    query,
+    breadcrumbs: breadcrumbsParams,
+  } = useAppSelector((state) => state.searchParamsSlice);
   const { products } = useAppSelector((state) => state.homePageSlice);
   const phones = filterProductsByCategory(products, "accessories");
   const sortedAccessories = sortProducts(phones, sort, query);
@@ -34,6 +39,7 @@ export const AccessoriesPage = () => {
 
   return (
     <CastomProductsContainer>
+      <BasicBreadcrumbs breadcrumbsParams={breadcrumbsParams} />
       <Box
         sx={{
           padding: "40px 0 40px 8px",

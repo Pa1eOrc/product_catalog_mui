@@ -5,6 +5,7 @@ type SearchParamsState = {
   sort: string;
   query: string;
   page: number;
+  breadcrumbs: string[];
 };
 
 const initialState: SearchParamsState = {
@@ -12,6 +13,7 @@ const initialState: SearchParamsState = {
   sort: "age",
   query: "",
   page: 1,
+  breadcrumbs: [],
 };
 
 const searchParamsSlice = createSlice({
@@ -41,9 +43,15 @@ const searchParamsSlice = createSlice({
 
       state.perPage = perPage;
     },
+
+    setBreadcrumbs: (state, action: PayloadAction<{ breadcrumbs: string[] }>) => {
+      const { breadcrumbs } = action.payload;
+
+      state.breadcrumbs = breadcrumbs;
+    },
   },
 });
 
-export const { setQuery, setPage, setPerPage, setSort } =
+export const { setQuery, setPage, setPerPage, setSort, setBreadcrumbs } =
   searchParamsSlice.actions;
 export default searchParamsSlice.reducer;

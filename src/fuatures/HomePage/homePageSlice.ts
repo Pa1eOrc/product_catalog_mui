@@ -19,8 +19,8 @@ const initialState: HomePageState = {
   hasError: { errorMessage: "", isError: false },
 };
 
-export const init = createAsyncThunk("products/fetch", () => {
-  return getProducts();
+export const init = createAsyncThunk("products/fetch", (url: string) => {
+  return getProducts(url);
 });
 
 const HomePageSlice = createSlice({

@@ -1,0 +1,134 @@
+{
+  "favourites": [
+    {
+      "id": "apple-ipad-pro-11-2021-1tb-silver",
+      "category": "tablets",
+      "itemId": "apple-ipad-pro-11-2021-1tb-silver",
+      "name": "Apple iPad Pro 11 (2021) 1TB Silver",
+      "capacity": "1TB",
+      "fullPrice": 899,
+      "price": 879,
+      "color": "silver",
+      "image": "img/tablets/apple-ipad-pro-11-2021/silver/00.webp",
+      "screen": "11' Liquid Retina",
+      "ram": "8GB",
+      "year": 2021
+    },
+    {
+      "id": "apple-ipad-pro-11-2021-512gb-spacegray",
+      "category": "tablets",
+      "itemId": "apple-ipad-pro-11-2021-512gb-spacegray",
+      "name": "Apple iPad Pro 11 (2021) 512GB Space Gray",
+      "capacity": "512GB",
+      "fullPrice": 869,
+      "price": 819,
+      "color": "spacegray",
+      "image": "img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
+      "screen": "11' Liquid Retina",
+      "ram": "8GB",
+      "year": 2021
+    },
+    {
+      "id": "apple-iphone-13-pro-max-512gb-sierrablue",
+      "category": "phones",
+      "itemId": "apple-iphone-13-pro-max-512gb-sierrablue",
+      "name": "Apple iPhone 13 Pro Max 512GB Sierra Blue",
+      "fullPrice": 1600,
+      "price": 1530,
+      "screen": "6.1' OLED",
+      "capacity": "512GB",
+      "color": "sierrablue",
+      "ram": "6GB",
+      "year": 2022,
+      "image": "img/phones/apple-iphone-13-pro-max/sierrablue/00.webp"
+    },
+    {
+      "id": "apple-ipad-pro-11-2021-2tb-spacegray",
+      "category": "tablets",
+      "itemId": "apple-ipad-pro-11-2021-2tb-spacegray",
+      "name": "Apple iPad Pro 11 (2021) 2TB Space Gray",
+      "capacity": "2TB",
+      "fullPrice": 999,
+      "price": 939,
+      "color": "spacegray",
+      "image": "img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
+      "screen": "11' Liquid Retina",
+      "ram": "8GB",
+      "year": 2021
+    },
+    {
+      "id": "apple-watch-series-6-44mm-silver",
+      "category": "accessories",
+      "itemId": "apple-watch-series-6-44mm-silver",
+      "name": "Apple Watch Series 6 44mm Silver",
+      "fullPrice": 429,
+      "price": 359,
+      "screen": "1.57' OLED",
+      "capacity": "44mm",
+      "color": "silver",
+      "ram": "1GB",
+      "year": 2020,
+      "image": "img/accessories/apple-watch-series-6/silver/00.webp"
+    },
+    {
+      "id": "apple-iphone-11-pro-max-512gb-silver",
+      "category": "phones",
+      "itemId": "apple-iphone-11-pro-max-512gb-silver",
+      "name": "Apple iPhone 11 Pro Max 512GB Silver",
+      "fullPrice": 2020,
+      "price": 1930,
+      "screen": "6.5' OLED",
+      "capacity": "512GB",
+      "color": "silver",
+      "ram": "4GB",
+      "year": 2019,
+      "image": "img/phones/apple-iphone-11-pro-max/silver/00.webp"
+    },
+    {
+      "id": "apple-iphone-14-pro-512gb-spaceblack",
+      "category": "phones",
+      "itemId": "apple-iphone-14-pro-512gb-spaceblack",
+      "name": "Apple iPhone 14 Pro 512GB Space Black",
+      "fullPrice": 1600,
+      "price": 1530,
+      "screen": "6.1' OLED",
+      "capacity": "512GB",
+      "color": "spaceblack",
+      "ram": "6GB",
+      "year": 2022,
+      "image": "img/phones/apple-iphone-14-pro/spaceblack/00.webp"
+    },
+    {
+      "id": "apple-iphone-11-pro-max-64gb-silver",
+      "category": "phones",
+      "itemId": "apple-iphone-11-pro-max-64gb-silver",
+      "name": "Apple iPhone 11 Pro Max 64GB Silver",
+      "fullPrice": 1480,
+      "price": 1400,
+      "screen": "6.5' OLED",
+      "capacity": "64GB",
+      "color": "silver",
+      "ram": "4GB",
+      "year": 2019,
+      "image": "img/phones/apple-iphone-11-pro-max/silver/00.webp"
+    }
+  ],
+  "cart": [
+    {
+      "id": "apple-iphone-14-pro-512gb-spaceblack",
+      "price": 1530,
+      "itemId": "apple-iphone-14-pro-512gb-spaceblack",
+      "name": "Apple iPhone 14 Pro 512GB Space Black",
+      "formatedImg": "img/iphone14.jpg",
+      "count": 1
+    },
+    {
+      "id": "apple-iphone-11-pro-max-64gb-silver",
+      "price": 1400,
+      "itemId": "apple-iphone-11-pro-max-64gb-silver",
+      "name": "Apple iPhone 11 Pro Max 64GB Silver",
+      "formatedImg": "img/phones/apple-iphone-11-pro-max/silver/00.jpg",
+      "count": 1
+    }
+  ]
+}

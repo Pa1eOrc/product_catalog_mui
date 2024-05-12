@@ -1,4 +1,3 @@
-import { Container, styled } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
@@ -7,21 +6,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
-
-const CastomContainer = styled(Container)(({ theme }) => ({
-  [theme.breakpoints.down("sm")]: {
-    padding: 0,
-  },
-  [theme.breakpoints.up("sm")]: {
-    padding: theme.spacing(0, 2),
-  },
-  [theme.breakpoints.up("md")]: {
-    padding: theme.spacing(0, 3),
-  },
-  [theme.breakpoints.up("md")]: {
-    padding: theme.spacing(0, 4),
-  },
-})) as typeof Container;
+import { CastomContainer } from "./BannerStyle";
 
 export const Banner = () => {
   const links = ["phones", "accessories", "tablets"];

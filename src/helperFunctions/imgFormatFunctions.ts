@@ -1,15 +1,22 @@
-export function imgFormatFunction(itemId: string, image: string, category: string) {
+export function imgFormatFunction(itemId: string, image: string) {
   if (
-    itemId.includes("iphone-12") ||
-    itemId.includes("iphone-13") ||
+    itemId.includes("iphone-12")
+  ) {
+    return "img/iphone12.jpg";
+  }
+  if (
+    itemId.includes("iphone-13")
+  ) {
+    return "img/iphone13.jpg";
+  }
+  if (
     itemId.includes("iphone-14")
   ) {
-    return "img/phones/apple-iphone-7/black/00.jpg";
+    return "img/iphone14.jpg";
   }
-
-  if (category === "phones") {
-    return image.replace(/\.webp$/, ".jpg");
-  }
-
+    if (itemId.includes("iphone")) {
+      return image.replace(/\.webp$/, ".jpg");
+    }
+  
   return image;
 }

@@ -1,69 +1,27 @@
 import {
   Box,
-  Button,
-  Card,
-  CardActions,
   CardContent,
-  CardMedia,
   Typography,
-  styled,
 } from "@mui/material";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 import { Product } from "../../types/Product";
 import { imgFormatFunction } from "../../helperFunctions/imgFormatFunctions";
 import {
   CastomTextTypography,
   CastomTypographyDescription,
+  CastomTypographyValue,
 } from "../../MUICastomStyle/styler";
-import { Link, useSearchParams } from "react-router-dom";
-
-const CastomCard = styled(Card)(({ theme }) => ({
-  padding: "32px",
-  border: "1px solid #e2e6e9",
-  transitionProperty: "transform",
-  transitionDuration: "0.5s",
-  
-  [theme.breakpoints.down("sm")]: {
-    minWidth: 214,
-    width: 214,
-  },
-  [theme.breakpoints.up("sm")]: {
-    minWidth: 239,
-    width: 239,
-  },
-  [theme.breakpoints.up("md")]: {
-    minWidth: 274,
-    width: 274,
-  },
-  "&:hover": {
-    transform: "scale(105%)",
-  },
-})) as typeof Card;
-
-const CastomCardMedia = styled(CardMedia)(({ theme }) => ({
-  backgroundSize: "contain",
-  maxWidth: 208,
-  [theme.breakpoints.down("sm")]: {
-    width: "100%",
-    height: 129,
-  },
-  [theme.breakpoints.up("sm")]: {
-    width: "100%",
-    height: 181,
-  },
-  [theme.breakpoints.up("md")]: {
-    width: "100%",
-    height: 196,
-  },
-})) as typeof CardMedia;
-
-const CastomTypographyValue = styled(Typography)({
-  fontFamily: "Mont",
-  fontWeight: 700,
-  fontSize: "12px",
-  lineHeight: "15px",
-}) as typeof Typography;
+import { Link, useLocation, useSearchParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import {
+  getFavourites,
+} from "../../query/favouritesQueryApi";
+import {
+  getCart,
+} from "../../query/cartQueryApi";
+import { getItemLocation } from "../../helperFunctions/otherFunctions";
+import { ButtonGroup } from "../ButtonGroup";
+import { CastomCard, CastomCardMedia } from "./ProductCartStyle";
 
 type Props = {
   product: Product;
@@ -82,14 +40,24 @@ export const ProductCart: React.FC<Props> = ({ product }) => {
     itemId,
     category,
   } = product;
+  const { pathname } = useLocation();
+  const itemLocation = getItemLocation(pathname, itemId, category);
+    
+  const { data: favourites } = useQuery({
+    queryKey: ["favourites"],
+    queryFn: getFavourites,
+  });
 
-  const formatedImg = imgFormatFunction(itemId, image, category);
+  const { data: cart } = useQuery({
+    queryKey: ["cart"],
+    queryFn: getCart,
+  });
+
+  const formatedImg = imgFormatFunction(itemId, image);
 
   return (
-    <Link
-      to={{
-        pathname: itemId,
-      }}
+    <Link 
+      to={itemLocation} 
       state={{ search: searchParams.toString() }}
     >
       <CastomCard>
@@ -174,48 +142,11 @@ export const ProductCart: React.FC<Props> = ({ product }) => {
           </Box>
         </CardContent>
 
-        <CardActions
-          sx={{
-            padding: 0,
-            paddingTop: 2,
-          }}
-        >
-          <Button
-            sx={{
-              border: "1px solid #B4BDC3",
-              padding: 0,
-              height: "40px",
-              width: "100%",
-              color: "#fff",
-              backgroundColor: "#313237",
-              fontFamily: "inherit",
-              fontSize: "14px",
-              lineHeight: "21px",
-              "&:hover": {
-                color: "#313237",
-                backgroundColor: "#fff",
-              },
-            }}
-          >
-            Add to cart
-          </Button>
-          <Button
-            sx={{
-              minWidth: "40px",
-              width: "40px",
-              height: "40px",
-              padding: 0,
-              border: "1px solid #B4BDC3",
-              color: "#313237",
-            }}
-          >
-            <FavoriteBorderIcon
-              sx={{
-                color: "#313237",
-              }}
-            />
-          </Button>
-        </CardActions>
+        <ButtonGroup
+          product={product}
+          favourites={favourites}
+          cart={cart}
+        />
       </CastomCard>
     </Link>
   );
