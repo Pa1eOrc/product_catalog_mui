@@ -11,7 +11,7 @@ import { TabletsPage } from "./pages/TabletPage";
 import { AccessoriesPage } from "./pages/AccessoriesPage";
 import { FavouritesPage } from "./pages/FavouritesPage";
 import { CardPage } from "./pages/CardPage";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+// import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const queryClient = new QueryClient();
 
@@ -50,7 +50,7 @@ export const Root = () => {
               <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Routes>
-          <ReactQueryDevtools initialIsOpen={true} />
+          {/* <ReactQueryDevtools initialIsOpen={true} /> */}
         </QueryClientProvider>
       </ReduxProvider>
     </HashRouter>
